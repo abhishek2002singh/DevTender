@@ -1,0 +1,19 @@
+{
+  "name": "devtenderbackend",
+  "version": "1.0.0",
+  "description": "tender for web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "mongooodb"
+  ],
+  "author": "abhishek singh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
