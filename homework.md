@@ -21,3 +21,7 @@ write logic to handle get , post ,patch , delete and test them using postman
 explore routing
 learn regular expression
 reading query param in the route and reading the dynamics routes
+
+multipal route handler -play with the code
+next()
+next function and error along with res.send
