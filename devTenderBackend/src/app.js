@@ -4,18 +4,19 @@ const app = express()
 
 
 app.get('/user' , (req ,res)=>{
+    console.log(req.query)
     res.send({firstName : 'abhishek' , lastName : 'yadav'})
 })
 
-app.post('/user' , (req ,res)=>{
+// app.post('/user' , (req ,res)=>{
    
-   res.send("data successfully savsed to database")
-})
+//    res.send("data successfully savsed to database")
+// })
 
-app.delete('/delete' , (req ,res)=>{
+// app.delete('/delete' , (req ,res)=>{
    
-    res.send("data delete savsed to database")
- })
+//     res.send("data delete savsed to database")
+//  })
  
 
 
