@@ -3,16 +3,22 @@ const express = require('express')
 const app = express()
 
 
-
-
-// app.get('/', (res , req)=>{
-//     res.send('hii i am abhishek singh')
-// })
-
-app.get('/', (res , req)=>{
-    req.send('hii i am abhishek singh  i am persuing b.tech from dr ram manohar lohia awadh university')
+app.get('/user' , (req ,res)=>{
+    res.send({firstName : 'abhishek' , lastName : 'yadav'})
 })
 
+app.post('/user' , (req ,res)=>{
+   
+   res.send("data successfully savsed to database")
+})
+
+app.delete('/delete' , (req ,res)=>{
+   
+    res.send("data delete savsed to database")
+ })
+ 
+
+
 app.listen(3000 , ()=>{
-    console.log('coude are running')
+    console.log('code is running on port  n 3000')
 })
