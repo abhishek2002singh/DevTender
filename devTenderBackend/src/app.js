@@ -2,22 +2,19 @@ const express = require('express')
 
 const app = express()
 
-const {adminAuth , userAuth} = require('./middlewares/auth')
+app.get('/' , (req , res) =>{
+    try{
 
-//middleware for auth
-app.use('/admin' , adminAuth);
+    }catch(err){
 
-app.post('/user/login' , (req , res)=>{
-    res.send('user loged in successfilly')
+    }
 })
 
-app.get('/user/data' ,userAuth , (req , res)=>{
-        res.send('user data send')
+app.get('/user' , (err , req , res , next)=>{
+    
 })
 
-app.get('/admin/deleteUser' , (req , res)=>{
-    res.send('delete a user')
-})
+
 
 
 app.listen(3000 , ()=>{
