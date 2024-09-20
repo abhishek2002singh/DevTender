@@ -1,22 +1,39 @@
-const express = require('express')
+const express = require('express');
 
-const app = express()
+const app = express();
 
-app.get('/' , (req , res) =>{
-    try{
+const dbConnect = require('./config/database');
 
-    }catch(err){
+const User = require('./models/user')
 
-    }
+
+
+app.post('/signup' , async(req , res)=>{
+    const user = new User({
+    firstName:'abhishek',
+    lastName:'singh',
+    emailId:'abhishek@gmail.com',
+    password:'123456'
+  })
+  try{
+    await user.save()
+    res.send('data pass successfully')
+
+  }catch{
+    res.status(401).send('data are not save')
+
+  }
 })
 
-app.get('/user' , (err , req , res , next)=>{
-    
-})
+
+dbConnect().then(() => {
+    console.log('Connection successful');
+    app.listen(3000, () => {
+        console.log('Code is running on port 3000');
+    });
+}).catch(err => {
+    console.error('Database connection failed:', err);
+});
 
 
-
-
-app.listen(3000 , ()=>{
-    console.log('code is running on port  n 3000')
-})
+ 

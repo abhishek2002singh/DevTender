@@ -29,3 +29,11 @@ what is a middleware why use it
 how express js basically handle for all request
 wrire dummy auth middleware
 error handling
+
+create a free cluster on mongoose db
+install mongoose library
+connect your applecation to database
+learn mordern connection way to database
+create a user schema and user models
+create a signup api to add data to database
+push some document
