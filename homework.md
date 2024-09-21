@@ -37,3 +37,16 @@ learn mordern connection way to database
 create a user schema and user models
 create a signup api to add data to database
 push some document
+error handling
+
+js object vs json (difference)
+add the express.json() middleware to your app
+make your signup api dynamics to recieve data from the end user
+user.findone with duplicate email which object return
+api get user by email
+get all user
+update user
+delete usersss
+explore the documentasion of mongoose
+learn more concept in mongoose
+different b/w put and putch
