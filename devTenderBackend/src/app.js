@@ -79,7 +79,7 @@ app.get('/singleuser' , async(req , res)=>{
 
 //delete the data from database
 
-app.get('/delete' , async(req , res)=>{
+app.delete('/delete' , async(req , res)=>{
   const deleteuser = req.body._id
   try{
     const deletedata = await User.findByIdAndDelete({_id :deleteuser})
@@ -103,7 +103,8 @@ app.patch('/update' , async(req , res)=>{
          const updatedUser = await User.findByIdAndUpdate(
       updateUserId,
       updateData,
-      { new: true, runValidators: true } // Options to return the updated document and run validation
+      { new: true, runValidators: true }
+       // Options to return the updated document and run validation
     );
 
         if(!updatedUser){

@@ -50,3 +50,10 @@ delete usersss
 explore the documentasion of mongoose
 learn more concept in mongoose
 different b/w put and putch
+
+explore schematype option
+add required , unique , lowercase , min , minlenght , maxlength
+add default
+create a custom validate function for gender
+improve the db schema - put all appropiation validations on each field
+add timestamps to the userschema
