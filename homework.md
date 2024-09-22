@@ -57,3 +57,9 @@ add default
 create a custom validate function for gender
 improve the db schema - put all appropiation validations on each field
 add timestamps to the userschema
+addd api level validation
+data sanitization
+install validator
+use validate function
+explore validater function
+validate emil possaword

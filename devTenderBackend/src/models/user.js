@@ -1,4 +1,5 @@
 const mongoose  = require('mongoose')
+const validator = require('validator')
 
 const userSchema =new mongoose.Schema({
     firstName: {
@@ -17,10 +18,24 @@ const userSchema =new mongoose.Schema({
         unique:true,
         trim:true,
 
+        validate(value){
+            if(!validator.isEmail(value)){
+                throw new Error("enter valid email" + value)
+            }
+        }
+
     },
     password: {
         type: String,
         required:true,
+        
+        validate(value){
+            if(!validator.isStrongPassword(value)){
+                throw new Error("password is not valid" + value);
+                
+
+            }
+        }
     },
     age: {
         type: Number,
@@ -37,7 +52,15 @@ const userSchema =new mongoose.Schema({
     },
     photoUrl :{
         type: String,
-         default : "https://www.google.com/imgres?q=photos%20human%20logo&imgurl=https%3A%2F%2Fwww.freeiconspng.com%2Fthumbs%2Fhuman-icon-png%2Fperson-outline-icon-png-person-outline-icon-png-person-17.png&imgrefurl=https%3A%2F%2Fwww.freeiconspng.com%2Fimages%2Fhuman-icon-png&docid=lQF1mCAMouxjeM&tbnid=Ug-3jTAg8PskWM&vet=12ahUKEwjjyKWDm9OIAxUTnGMGHSPGBooQM3oECHQQAA..i&w=320&h=320&hcb=2&ved=2ahUKEwjjyKWDm9OIAxUTnGMGHSPGBooQM3oECHQQAA"
+         default : "https://www.google.com/imgres?q=photos%20human%20logo&imgurl=https%3A%2F%2Fwww.freeiconspng.com%2Fthumbs%2Fhuman-icon-png%2Fperson-outline-icon-png-person-outline-icon-png-person-17.png&imgrefurl=https%3A%2F%2Fwww.freeiconspng.com%2Fimages%2Fhuman-icon-png&docid=lQF1mCAMouxjeM&tbnid=Ug-3jTAg8PskWM&vet=12ahUKEwjjyKWDm9OIAxUTnGMGHSPGBooQM3oECHQQAA..i&w=320&h=320&hcb=2&ved=2ahUKEwjjyKWDm9OIAxUTnGMGHSPGBooQM3oECHQQAA",
+
+         
+        validate(value){
+            if(!validator.isURL(value)){
+                throw new Error("enter valid photoURL" + value)
+            }
+        }
+
     },
     about:{
         type:String,
