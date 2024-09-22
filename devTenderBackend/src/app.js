@@ -96,22 +96,32 @@ app.delete('/delete' , async(req , res)=>{
 
 //update the data from database
 
-app.patch('/update' , async(req , res)=>{
-  const updateUserId=req.body._id
+app.patch('/update/:updateUserId' , async(req , res)=>{
+  const updateUserId=req.params.updateUserId
   const updateData = req.body; 
   try{
-         const updatedUser = await User.findByIdAndUpdate(
+      
+      const ALLOWED_UPDATES = ["updateUserId","photoUrl" , "about" , "gender" , "age" , "skills"];
+      const isUpdateAllowed = Object.keys(updateData).every((k)=>
+        ALLOWED_UPDATES.includes(k)
+      );
+      if(!isUpdateAllowed){
+        throw new Error("update not allow")
+      }
+      if(updateData?.skills.length >10){
+        throw new error('skills is more than ten')
+      }
+
+      const updatedUser = await User.findByIdAndUpdate(
       updateUserId,
       updateData,
-      { new: true, runValidators: true }
+      { new:true, runValidators: true }
        // Options to return the updated document and run validation
     );
 
-        if(!updatedUser){
-          res.status(404).send('user not found')
-        }else{
-          res.send(updatedUser)
-        }
+      console.log(updatedUser)
+          res.send("user updates successffully")
+       
   }catch(err){
 
     res.status(404).send('something went wrong')

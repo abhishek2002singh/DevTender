@@ -43,6 +43,7 @@ const userSchema =new mongoose.Schema({
         type:String,
         default: "this is default about any one",
     },
+    
     skills:{
         type: [String]
     },
