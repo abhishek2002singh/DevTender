@@ -5,22 +5,35 @@ const app = express();
 const dbConnect = require('./config/database');
 
 const User = require('./models/user');
-const e = require('express');
+const  bcrypt = require('bcrypt')
 
 //add middleware from express
 app.use(express.json())
+const {validateSignUpData} = require('./utils/validation')
 
 
 
 app.post('/signup' , async(req , res)=>{
-    const user = new User(req.body)
-    console.log(req.body)
+    
+   
   try{
+    //validation of data
+    
+    validateSignUpData(req)  
+
+    const {firstName ,lastName , emailId ,password} = req.body
+
+    //encrypt the password
+    const passwordHash = await bcrypt.hash(password , 10);
+    console.log(passwordHash)
+    const user = new User({
+      firstName , lastName ,emailId ,password:passwordHash
+    })
     await user.save()
     res.send('data pass successfully')
 
-  }catch{
-    res.status(401).send('data are not save')
+  }catch(err){
+    res.status(401).send("Error :" +err.message)
 
   }
 })
