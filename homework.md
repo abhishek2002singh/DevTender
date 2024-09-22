@@ -67,3 +67,5 @@ validate emil possaword
 validate data in signup data
 install bcrypt password
 create passwordhash and encrypr the password
+create login api
+compare email and through error
