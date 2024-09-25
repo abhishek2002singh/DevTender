@@ -69,3 +69,13 @@ install bcrypt password
 create passwordhash and encrypr the password
 create login api
 compare email and through error
+
+install cookies parser
+just send dummy cookies to user
+create get / profile api and check you get the cookies back
+install jsonwebtoken
+in login api , after email and password validation , create a jwt token and send it to user in
+read the cookies inside your profile api and find the usesr login
+user auth middleware
+add the user auth middleware in profile and new sendconnectonrequest api
+set the expiry of jwt token and cookies to 7 days

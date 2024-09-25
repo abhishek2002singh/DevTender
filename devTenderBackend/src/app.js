@@ -12,7 +12,9 @@ const jwt = require('jsonwebtoken');
 //add middleware from express
 app.use(express.json())
 app.use(cookieParser())
-const {validateSignUpData} = require('./utils/validation')
+const {validateSignUpData} = require('./utils/validation');
+const { userAuth } = require('./middlewares/auth');
+const user = require('./models/user');
 
 
 
@@ -56,11 +58,11 @@ app.post('/login', async (req, res) => {
 
       //create a jwt token
        
-      const token = await jwt.sign({_id: user._id} , "DEV@Tinder$790")
+      const token = await jwt.sign({_id: user._id} , "DEV@Tinder$790" ,{expiresIn : '7d'})
       console.log(token)
 
       //add the token to cookie and send the respande back the user
-       res.cookie("token" ,token)
+       res.cookie("token" ,token ,{ expires :new Date(Date.now()+8*3600000)})
 
       res.send("Login successful!!!!");
     } else {
@@ -73,114 +75,26 @@ app.post('/login', async (req, res) => {
 });
 
 // user profile
-app.get('/profile' , async(req , res)=>{
-  const getcookies = req.cookies
-  console.log(getcookies)
-  res.send('cookies found')
+app.get('/profile',userAuth , async(req , res)=>{
+
+  try{ 
+
+      const accessUser = req.accessUser
+      res.send(accessUser)
+
+  }catch (err) {
+    res.status(400).send("Error: " + err.message);
+  }
+
+ 
 })
 
+app.post('/sendConnectonRequest' ,userAuth ,  (req , res)=>{
 
-//get the user through the emailid
+ const accessUser = req.accessUser
+  console.log("sending the connection request")
 
-app.get('/user' , async(req , res)=>{
-  const userEmail = req.body.emailId
-  try{
-    const users = await User.find({emailId:userEmail})
-    if(users.length===0){
-      res.status(404).send('user not found')
-    }else{
-      res.send(users)
-    }
-  }catch(err){
-    res.status(400).send('something went wrong')
-  }
-})
-
-//feed all user 
-
-app.get('/feed' , async(req , res)=>{
-
-  try{
-    const alluser =await User.find({})
-    if(!alluser){
-      res.status(404).send('user not found')
-    }
-    else{
-      res.send(alluser)
-    }
-
-  }catch(err){
-    res.status(404).send('something went wrong')
-  }
-})
-
-//get user only one using findone method
-
-app.get('/singleuser' , async(req , res)=>{
-  const oneuser = req.body.emailId
-  try{
-    
-    const check =await User.findOne({emailId:oneuser})
-    if(!check){
-      res.status(404).send('user not found')
-    }else{
-      res.send(check)
-    }
-
-  }catch(err){
-    res.status(404).send('something went wrong')
-  }
-})
-
-//delete the data from database
-
-app.delete('/delete' , async(req , res)=>{
-  const deleteuser = req.body._id
-  try{
-    const deletedata = await User.findByIdAndDelete({_id :deleteuser})
-    if(!deletedata){
-      res.status(404).send('user not found')
-    }else{
-      res.send(deletedata)
-    }
-
-  }catch(err){
-    res.status(404).send('something went wrong')
-  }
-})
-
-//update the data from database
-
-app.patch('/update/:updateUserId' , async(req , res)=>{
-  const updateUserId=req.params.updateUserId
-  const updateData = req.body; 
-  try{
-      
-      const ALLOWED_UPDATES = ["updateUserId","photoUrl" , "about" , "gender" , "age" , "skills"];
-      const isUpdateAllowed = Object.keys(updateData).every((k)=>
-        ALLOWED_UPDATES.includes(k)
-      );
-      if(!isUpdateAllowed){
-        throw new Error("update not allow")
-      }
-      if(updateData?.skills.length >10){
-        throw new error('skills is more than ten')
-      }
-
-      const updatedUser = await User.findByIdAndUpdate(
-      updateUserId,
-      updateData,
-      { new:true, runValidators: true }
-       // Options to return the updated document and run validation
-    );
-
-      console.log(updatedUser)
-          res.send("user updates successffully")
-       
-  }catch(err){
-
-    res.status(404).send("Error :"+ err.message)
-  }
+  res.send(accessUser.firstName +" send the connection request")
 })
 
 dbConnect().then(() => {
