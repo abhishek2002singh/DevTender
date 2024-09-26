@@ -79,3 +79,13 @@ read the cookies inside your profile api and find the usesr login
 user auth middleware
 add the user auth middleware in profile and new sendconnectonrequest api
 set the expiry of jwt token and cookies to 7 days
+create user schema method to getjwt
+create user schema method to comparea password
+
+explore tinder apis
+create a list all apis you can think of in devtender
+group multipal route under respective routes
+read documentation for express.router
+create router folder and manage auth , profile routes
+create authRouter ,profilrRouter , requestRouter
+import these routers
