@@ -7,11 +7,13 @@ const userSchema =new mongoose.Schema({
     firstName: {
         type:String,
         required: true,
+        index:true,
         minlength:4,
         maxlenght:50,
     },
     lastName:{
-        type : String
+        type : String,
+        index:true,
     },
     emailId: {
         type : String,
@@ -75,6 +77,8 @@ const userSchema =new mongoose.Schema({
 },{
     timestamps:true,
 })
+
+
 
 // const User = mongoose.model('User' , userSchema )
 
