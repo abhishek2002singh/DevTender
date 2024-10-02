@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import NavBar from "./navBar"
+import NavBar from "../component/NavBar"
 
 
 const Body = () => {
