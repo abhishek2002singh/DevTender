@@ -8,7 +8,7 @@ const userAuth =async(req , res , next)=>{
     
          const  {token} = getcookies
          if(!token){
-          throw new Error ('invalid token')
+          return res.status(401).send("please login")
          }
     
       //validate my token
