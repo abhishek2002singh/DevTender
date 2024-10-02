@@ -51,7 +51,7 @@ authRouth.post('/login', async (req, res) => {
         //add the token to cookie and send the respande back the user
          res.cookie("token" ,token ,{ expires :new Date(Date.now()+8*3600000)})
   
-        res.send("Login successful!!!!");
+        res.send(user);
       } else {
         throw new Error("Password is not correct");
       }

@@ -2,11 +2,17 @@ const express = require('express');
 const app = express();
 const dbConnect = require('./config/database');
 const cookieParser = require('cookie-parser')
+const corse = require('cors')
 
 
 //add middleware from express
+app.use(corse({
+    origin: "http://localhost:5173",
+    credentials:true,
+}));
 app.use(express.json())
 app.use(cookieParser())
+
 
 //routes
 const authRouth = require('./routes/auth')
