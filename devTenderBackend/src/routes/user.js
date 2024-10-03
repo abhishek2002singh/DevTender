@@ -4,7 +4,7 @@ const {userAuth}=require('../middlewares/auth')
 const connectionRequestModel = require('../models/connectionRequest')
 const User  = require('../models/user')
 
-const USER_SELF_DATA ="firstName lastName  age  gender about  skills"
+const USER_SELF_DATA ="firstName lastName  age  gender about  skills photoUrl"
 
 //get all the pending connnection request for loggin user
 userRouter.get('/user/requests/received' , userAuth , async(req , res)=>{
@@ -81,6 +81,7 @@ userRouter.get('/feed' , userAuth , async(req , res)=>{
                  {_id:{ $ne: loggedInUser._id}}
             ]
          }).select(USER_SELF_DATA).skip(skip).limit(limit)
+        
 
 
         res.send(users)
