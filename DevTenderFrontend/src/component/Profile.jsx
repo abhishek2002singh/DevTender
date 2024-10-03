@@ -1,9 +1,17 @@
+import { useSelector } from "react-redux";
 
+import ShowProfile from "./ShowProfile";
+import {  Outlet } from "react-router-dom";
 
 const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
-}
+  const user = useSelector((store) => store.user);
 
-export default Profile
+  return (
+    <div>
+      <ShowProfile user={user} />
+      <Outlet />
+    </div>
+  );
+};
+
+export default Profile;
