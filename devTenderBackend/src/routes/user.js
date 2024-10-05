@@ -7,25 +7,38 @@ const User  = require('../models/user')
 const USER_SELF_DATA ="firstName lastName  age  gender about  skills photoUrl"
 
 //get all the pending connnection request for loggin user
-userRouter.get('/user/requests/received' , userAuth , async(req , res)=>{
-    try{
-        const loggedUser = req.accessUser
-
-        console.log("Connection Request Model:", connectionRequestModel);
-
-        const connectionRequest = await connectionRequestModel.find({
-            toUserId : loggedUser._id,
-            status:"interested"
-        }).populate('fromUserId' , )
-        // populate('fromUserId' , ['firstName','lastName'])
-
-        res.json({message: "data fetch successfully", data : connectionRequest})
-
-    }catch(err){
-        res.status(400).send("ERROR: " +err.message)
-
+userRouter.get('/user/requests/received', userAuth, async (req, res) => {
+    try {
+      const loggedUser = req.accessUser;
+      
+  
+      if (!loggedUser) {
+        return res.status(401).json({ message: "Unauthorized. User not found." });
+      }
+  
+      console.log("Logged User:", loggedUser);
+  
+      // Fetch the received requests with debug logs
+      const connectionRequests = await connectionRequestModel.find({
+        toUserId: loggedUser._id,
+        status: "interested"
+      })
+      console.log(connectionRequests)
+      
+  
+      console.log("Received Requests:", connectionRequests);
+  
+      if (connectionRequests.length === 0) {
+        console.log("No requests found for the logged user.");
+      }
+  
+      res.json({ message: "Data fetched successfully", data: connectionRequests });
+    } catch (err) {
+      console.error("ERROR:", err.message);
+      res.status(400).send("ERROR: " + err.message);
     }
-})
+  });
+  
 
 userRouter.get('/user/connections' , userAuth ,async(req , res)=>{
     try{

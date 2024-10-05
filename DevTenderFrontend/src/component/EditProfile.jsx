@@ -57,7 +57,7 @@ const EditProfile = () => {
               name="firstName"
               value={firstName}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400"
-              required
+              // required
               onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
@@ -68,7 +68,7 @@ const EditProfile = () => {
               name="lastName"
               value={lastName}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400"
-              required
+              // required
               onChange={(e) => setLastName(e.target.value)}
             />
           </div>
@@ -79,7 +79,7 @@ const EditProfile = () => {
               name="age"
               value={age}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400"
-              required
+              // required
               onChange={(e) => setAge(e.target.value)}
             />
           </div>
@@ -90,7 +90,7 @@ const EditProfile = () => {
               name="gender"
               value={gender}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400"
-              required
+              // required
               onChange={(e) => setGender(e.target.value)}
             />
           </div>
