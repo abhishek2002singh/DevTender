@@ -19,7 +19,7 @@ const UserCard = ({ user }) => {
               {firstName} {lastName}
             </h2>
             <p className="text-gray-600 mb-2">Age: {age}</p>
-            <p className="text-gray-600 mb-4">Skills: {skills?.join(", ")}</p>
+            <p className="text-gray-600 mb-4">Skills: {skills}</p>
             <div className="card-actions flex justify-end space-x-4">
               <button className="btn bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">
                 Interested
