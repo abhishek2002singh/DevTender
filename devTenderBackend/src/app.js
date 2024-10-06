@@ -30,7 +30,7 @@ app.use('/',userRouter)
 
 dbConnect().then(() => {
     console.log('Connection successful');
-    app.listen(port, () => {
+    app.listen(3000, () => {
         console.log('Code is running on port 3000');
     });
 }).catch(err => {
