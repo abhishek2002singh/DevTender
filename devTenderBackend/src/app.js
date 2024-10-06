@@ -3,6 +3,7 @@ const app = express();
 const dbConnect = require('./config/database');
 const cookieParser = require('cookie-parser')
 const corse = require('cors')
+const port = process.env.port || 3000
 
 
 //add middleware from express
@@ -30,7 +31,7 @@ app.use('/',userRouter)
 
 dbConnect().then(() => {
     console.log('Connection successful');
-    app.listen(3000, () => {
+    app.listen(port, () => {
         console.log('Code is running on port 3000');
     });
 }).catch(err => {
