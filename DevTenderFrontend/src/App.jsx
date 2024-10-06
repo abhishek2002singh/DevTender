@@ -9,6 +9,10 @@ import Feed from './component/Feed'
 import EditProfile from './component/EditProfile'
 import Connection from './component/Connection'
 import Request from './component/Request'
+import About from './component/About'
+import Skills from './component/Skills'
+import Jobs from './Jobs'
+import Contact from './component/Contact'
 
 function App() { 
 
@@ -24,6 +28,10 @@ function App() {
         <Route path='/EditProfile' element={<EditProfile />} />
         <Route path='/connection' element={<Connection />} />
         <Route path='/Request' element={<Request />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/skills' element={<Skills />} />
+        <Route path='/jobs' element={<Jobs />} />
+        <Route path='/contact' element={<Contact />} />
       
       </Route>
      

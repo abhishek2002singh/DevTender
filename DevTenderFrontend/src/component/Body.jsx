@@ -5,6 +5,7 @@ import {BASE_URL}  from '../utils/Constant'
 import { useDispatch, useSelector } from "react-redux"
 import {addUser} from '../utils/userSlice'
 import { useEffect } from "react"
+import Footer from "./Footer"
 
 
 const Body = () => {
@@ -40,11 +41,19 @@ const Body = () => {
   } ,[])
 
   return (
-    <div>
-        <NavBar />
-        <Outlet/>
+    // <div>
+    //     <NavBar />
+    //     <Outlet/>
         
+    // </div>
+
+    <div className="flex flex-col min-h-screen">
+    <NavBar />
+    <div className="flex-grow">
+      <Outlet />
     </div>
+    <Footer /> {/* Add Footer here */}
+  </div>
   )
 }
 

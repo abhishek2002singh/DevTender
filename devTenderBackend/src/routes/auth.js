@@ -18,12 +18,21 @@ authRouth.post('/signup' , async(req , res)=>{
   
       //encrypt the password
       const passwordHash = await bcrypt.hash(password , 10);
-      console.log(passwordHash)
+
       const user = new User({
         firstName , lastName ,emailId ,password:passwordHash
       })
-      await user.save()
-      res.send('data pass successfully')
+      const savedUser =await user.save()
+
+      const token = await savedUser.getJWT();
+  
+      //add the token to cookie and send the respande back the user
+       res.cookie("token" ,token ,{ expires :new Date(Date.now()+8*3600000)})
+
+      
+      res.json({ message : ' data pass successfully' , data :savedUser})
+
+      
   
     }catch(err){
       res.status(401).send("Error :" +err.message)
