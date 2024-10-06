@@ -3,7 +3,6 @@ const app = express();
 const dbConnect = require('./config/database');
 const cookieParser = require('cookie-parser')
 const corse = require('cors')
-const port = process.env.port || 3000
 
 
 //add middleware from express
