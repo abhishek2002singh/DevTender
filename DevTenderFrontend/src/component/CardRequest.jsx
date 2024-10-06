@@ -1,5 +1,25 @@
+import axios from "axios";
+import { BASE_URL } from "../utils/Constant";
+import { useDispatch } from "react-redux";
+import { removeRequest } from "../utils/requstSlice";
+
 const CardRequest = ({ user }) => {
+    const dispatch = useDispatch()
     const { firstName, lastName, age, gender, about, skills, photoUrl } = user.fromUserId;
+
+    const reviewRequest = async(status ,_id) =>{
+        try{
+
+            const res = await axios.post(BASE_URL + "/request/review/" + status + '/' + _id , {} ,{
+                withCredentials:true
+            })
+            dispatch(removeRequest(_id))
+           
+
+        }catch(err){
+            console.error(err)
+        }
+    }
   
     return (
       <div className="carousel carousel-center rounded-box max-w-md space-x-4 p-4 bg-base-300 shadow-md">
@@ -33,11 +53,13 @@ const CardRequest = ({ user }) => {
             <div className="flex space-x-4 mt-6">
               <button
                 className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300 ease-in-out"
+                onClick={()=>reviewRequest("accepted" ,user._id)}
               >
                 Accept
               </button>
               <button
                 className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-300 ease-in-out"
+                onClick={()=>reviewRequest("rejected" ,user._id)}
               >
                 Reject
               </button>
