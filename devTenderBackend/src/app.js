@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 
 //add middleware from express
 app.use(corse({
-    origin: "http://localhost:5173",
+    origin: "https://fluffy-pudding-ed4ebf.netlify.app/",
     credentials:true,
 }));
 app.use(express.json())
