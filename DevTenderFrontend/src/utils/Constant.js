@@ -1,1 +1,1 @@
-export const BASE_URL = "https://devtender-4.onrender.com";
+export const BASE_URL = "https://devtender-backend1.onrender.com"
