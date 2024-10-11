@@ -36,7 +36,7 @@ const Login = () => {
         emailId,
         password,
       }, { withCredentials: true });
-      
+     
       dispatch(addUser(res.data.data));
      return navigate('/profile');
     } catch (err) {
