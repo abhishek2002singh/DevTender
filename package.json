@@ -7,8 +7,10 @@
   "description": "tender for web",
   "main": "app.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
+    
+    "dev": "nodemon DevTenderBackend/src/app.js",
+    "build":"npm install && npm install --prefix DevTenderFrontend && npm run build --prefix DevTenderFrontend",
+    "start": "nodemon DevTenderBackend/src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
