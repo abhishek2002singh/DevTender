@@ -5,13 +5,17 @@
   "name": "devtenderbackend",
   "version": "1.0.0",
   "description": "tender for web",
-  "main": "app.js",
+
+  "main": "DevTenderBackend/src/app.js",
   "scripts": {
-    "dev": "nodemon DevTenderBackend/src/app.js",
-    "build": "npm install && npm install --prefix DevTenderFrontend && npm run build --prefix DevTenderFrontend",
-    "start": "nodemon DevTenderBackend/src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "dev": "nodemon DevTenderBackend/src/app.js",
+  "start": "node DevTenderBackend/src/app.js",
+  "build": "npm install && npm install --prefix DevTenderFrontend && npm run build --prefix DevTenderFrontend",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
+
+
+ 
   "keywords": [
     "node",
     "js",
