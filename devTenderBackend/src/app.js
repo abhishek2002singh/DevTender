@@ -4,7 +4,7 @@ const app = express();
 const dbConnect = require('./config/database');
 const cookieParser = require('cookie-parser')
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const path = require('path')
 
 const _dirname = path.resolve();
@@ -41,9 +41,9 @@ app.get('*',(req , res)=>{
 
 dbConnect().then(() => {
     console.log('Connection successful');
-    app.listen(port, () => {
-        console.log('Code is running on port 3000');
-    });
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+      });
 }).catch(err => {
     console.error('Database connection failed:', err);
 });
