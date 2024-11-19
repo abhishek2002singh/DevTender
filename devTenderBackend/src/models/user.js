@@ -56,7 +56,7 @@ const userSchema =new mongoose.Schema({
     },
     photoUrl :{
         type: String,
-        default : "https://avatars.githubusercontent.com/u/108977081?v=4",
+        default : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0ZxwCJ0PDLfFEpF09-lMCMhFMtCFoTVUJ0Q&s",
          
         validate(value){
             if(!validator.isURL(value)){

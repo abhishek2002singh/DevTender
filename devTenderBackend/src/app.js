@@ -33,11 +33,8 @@ app.use('/' ,requestRouter)
 app.use('/',userRouter)
 
 
-app.use(express.static(path.join(_dirname , "/DevTenderFrontend/dist")))
 
-app.get('*',(req , res)=>{
-    res.sendFile(path.resolve(_dirname ,"DevTenderFrontend" , "dist" ,"index.html" ))
-})
+
 
 dbConnect().then(() => {
     console.log('Connection successful');
