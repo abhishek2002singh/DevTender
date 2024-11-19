@@ -15,6 +15,7 @@ import About from './component/About';
 import Skills from './component/Skills';
 import Jobs from './Jobs';
 import Contact from './component/Contact';
+import PreLoginHandle from './component/PreLoginHandle';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* Prelogin route */}
-          <Route path="/" element={<Prelogin />} />
+          <Route path="/" element={<PreLoginHandle />} />
           <Route path="login" element={<Login />} />
 
           {/* Main app routes */}
