@@ -16,11 +16,11 @@ const Footer = () => {
         <nav className="mb-6 md:mb-0">
           <h6 className="text-lg font-semibold mb-4">Company</h6>
           <ul className="space-y-2">
-            <Link to='/about'><li><a className="link link-hover">About us</a></li></Link>
+            <Link to='/app/about'><li><a className="link link-hover">About us</a></li></Link>
             
-            <Link to='/skills'><li><a className="link link-hover">skills</a></li></Link>
-            <Link to='/jobs'><li><a className="link link-hover">Jobs</a></li></Link>
-            <Link to='/contact'><li><a className="link link-hover">Contact</a></li></Link>
+            <Link to='/app/skills'><li><a className="link link-hover">skills</a></li></Link>
+            <Link to='/app/jobs'><li><a className="link link-hover">Jobs</a></li></Link>
+            <Link to='/app/contact'><li><a className="link link-hover">Contact</a></li></Link>
           </ul>
         </nav>
 

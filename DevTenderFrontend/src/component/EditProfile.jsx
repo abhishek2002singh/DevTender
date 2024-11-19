@@ -39,7 +39,7 @@ const EditProfile = () => {
         }
       );
       dispatch(addUser(res?.data?.data));
-      navigate('/profile'); // Navigate to the profile page after success
+      navigate('/app/profile'); // Navigate to the profile page after success
     } catch (err) {
       console.error(err);
     }
@@ -49,6 +49,7 @@ const EditProfile = () => {
     <div className="flex items-center justify-center min-h-screen bg-base-100 my-5">
       <div className="w-full max-w-lg bg-base-300 rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold mb-6 text-center">Edit Profile</h2>
+        <h2 className="block text-sm font-medium text-red-400 text-center">all boxes mandatory to fill</h2>
         <form className="space-y-4" onSubmit={handleEditProfile}>
           <div>
             <label className="block text-sm font-medium text-gray-400">First Name</label>
@@ -106,6 +107,7 @@ const EditProfile = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-400">Photo URL</label>
+            <label className="block text-sm font-medium text-red-400">if not have photoUrl then use default photoUrl- https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0ZxwCJ0PDLfFEpF09-lMCMhFMtCFoTVUJ0Q&s  </label>
             <input
               type="url"
               name="photoUrl"

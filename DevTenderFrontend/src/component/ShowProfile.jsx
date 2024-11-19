@@ -40,7 +40,7 @@ const ShowProfile = ({ user }) => {
           <button
             
             className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200"
-          ><Link to='/EditProfile'> EditProfile  </Link>
+          ><Link to='/app/EditProfile'> EditProfile  </Link>
             
           </button>
         </div>

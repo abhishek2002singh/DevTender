@@ -22,7 +22,7 @@ const Login = () => {
       }, { withCredentials: true });
       
       dispatch(addUser(res.data));
-     return  navigate('/');
+     return  navigate('/app');
     } catch (err) {
       console.error(err);
     }
@@ -38,7 +38,7 @@ const Login = () => {
       }, { withCredentials: true });
      
       dispatch(addUser(res.data.data));
-     return navigate('/profile');
+     return navigate('/app');
     } catch (err) {
       console.error(err);
     }
