@@ -4,7 +4,7 @@ const app = express();
 const dbConnect = require('./config/database');
 const cookieParser = require('cookie-parser')
 
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const path = require('path')
 
 const _dirname = path.resolve();
@@ -38,8 +38,8 @@ app.use('/',userRouter)
 
 dbConnect().then(() => {
     console.log('Connection successful');
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
       });
 }).catch(err => {
     console.error('Database connection failed:', err);
