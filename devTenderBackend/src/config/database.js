@@ -1,7 +1,10 @@
 const mongoose  = require('mongoose')
 
 // Importing the environment variables using the dotenv library
-require("dotenv").config();
+// require("dotenv").config();
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 //use can use both 
 
@@ -25,7 +28,15 @@ require("dotenv").config();
 
 const dbConnect = async() => {
 	// Connecting to the database using the provided URL from the environment variables
-	await mongoose.connect(process.env.DATABASE_URL)
+	try{ 
+		await mongoose.connect(process.env.DATABASE_URL)
+		console.log('Database connected successfully');
+
+	}catch(error){
+		console.error('Database connection error:', error);
+        throw error;
+	}
+	
 };
 
 // Exporting the dbConnect function for use in other files

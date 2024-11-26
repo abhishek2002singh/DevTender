@@ -1,10 +1,12 @@
 const express = require('express');
-require("dotenv").config();
+
 const app = express();
 const dbConnect = require('./config/database');
 const cookieParser = require('cookie-parser')
 
-const port = process.env.PORT || 3000;
+const dotenv = require('dotenv');
+
+const port = process.env.PORT || 3000
 const path = require('path')
 
 const _dirname = path.resolve();
