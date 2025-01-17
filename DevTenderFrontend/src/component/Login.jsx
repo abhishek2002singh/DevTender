@@ -45,79 +45,93 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-start justify-center" style={{ paddingTop: "30px" }}>
-      <section className="flex flex-col md:flex-row justify-center items-center space-y-10 md:space-y-0 md:space-x-16 p-10 bg-base-300 shadow-lg rounded-lg">
-        <div className="md:w-1/3 max-w-sm">
-          <img
-            src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-            alt="Sample image"
-          />
-        </div>
-        <div className="md:w-1/3 max-w-sm w-full">
-          <div className="text-center md:text-left mb-6">
-            <h2 className="text-2xl font-bold">{isSignup ? 'Sign Up' : 'Log In'}</h2>
-          </div>
-
-          {isSignup && (
-            <>
-              <label className="block text-sm font-medium mb-1">First Name</label>
-              <input
-                className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mb-4"
-                type="text"
-                placeholder="Enter First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-
-              <label className="block text-sm font-medium mb-1">Last Name</label>
-              <input
-                className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mb-4"
-                type="text"
-                placeholder="Enter Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </>
-          )}
-
-          <label className="block text-sm font-medium mb-1">Email ID</label>
-          <input
-            className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mb-4"
-            type="text"
-            placeholder="Enter Email ID"
-            value={emailId}
-            onChange={(e) => setEmailId(e.target.value)}
-          />
-
-          <label className="block text-sm font-medium mb-1">Password</label>
-          <input
-            className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mb-6"
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <div className="text-center">
-            <button
-              className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition duration-300 mb-4"
-              onClick={isSignup ? handleSignup : handleLogin}
-            >
-              {isSignup ? 'Sign Up' : 'Login'}
-            </button>
-            <p className="text-sm">
-              {isSignup ? 'Already have an account?' : "Don't have an account?"} 
-              <button
-                className="text-blue-500 font-semibold ml-1"
-                onClick={() => setIsSignup(!isSignup)}
-              >
-                {isSignup ? 'Log In' : 'Sign Up'}
-              </button>
-            </p>
-          </div>
-        </div>
-      </section>
+    
+    <div className="min-h-screen flex items-center justify-center bg-gray-900">
+      
+      
+  <section className="flex flex-col md:flex-row items-center p-8 md:p-16 bg-gray-800 text-white rounded-lg shadow-lg max-w-6xl w-full">
+    {/* Image Section */}
+    
+    
+    <div className="md:w-1/2 w-full flex justify-center">
+    
+      <img
+        src={isSignup
+          ? "https://dev-tinder-di9z.vercel.app/assets/swipe-DKBteVz8.gif"
+          : "https://dev-tinder-di9z.vercel.app/assets/Chat-BxILe8ch.gif"}
+        alt={isSignup ? "Signup Illustration" : "Login Illustration"}
+        className="rounded-lg shadow-md object-cover w-full h-full max-h-[400px]"
+      />
     </div>
+
+    
+
+    {/* Form Section */}
+    <div className="md:w-1/2 w-full px-6 md:px-10 mt-10 md:mt-0">
+      
+      <div className="text-center md:text-left mb-8">
+        <h2 className="text-3xl font-bold">{isSignup ? "Register" : "Log In"}</h2>
+        <p className="text-sm text-gray-400">
+          {isSignup
+            ? "Welcome back, 🙏 please enter your details."
+            : "Welcome! Log in to continue."}
+        </p>
+      </div>
+
+      {isSignup && (
+        <>
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="w-full p-3 mb-4 text-gray-900 bg-gray-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="w-full p-3 mb-4 text-gray-900 bg-gray-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </>
+      )}
+
+      <input
+        type="email"
+        placeholder="Email ID"
+        value={emailId}
+        onChange={(e) => setEmailId(e.target.value)}
+        className="w-full p-3 mb-4 text-gray-900 bg-gray-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="w-full p-3 mb-6 text-gray-900 bg-gray-100 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+
+      <button
+        onClick={isSignup ? handleSignup : handleLogin}
+        className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded transition duration-300"
+      >
+        {isSignup ? "Sign Up" : "Login"}
+      </button>
+
+      <p className="mt-4 text-center">
+        {isSignup ? "Existing User?" : "New User?"}{" "}
+        <button
+          onClick={() => setIsSignup(!isSignup)}
+          className="text-blue-400 hover:text-blue-300 font-semibold"
+        >
+          {isSignup ? "Log In Here" : "Sign Up"}
+        </button>
+      </p>
+    </div>
+  </section>
+</div>
+
   );
 };
 

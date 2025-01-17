@@ -9,6 +9,7 @@ import CardRequest from "./CardRequest"
 const Request = () => {
   const dispatch = useDispatch()
   const selector = useSelector((store)=> store.request)
+  const { theme } = useSelector((store) => store.theme);
 
   const fetchRequest = async()=>{
      try{
@@ -31,7 +32,14 @@ const Request = () => {
   if(!selector) return
   if (selector.length === 0) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-base-100 to-base-300">
+      // <div className="flex items-center justify-center h-screen bg-gradient-to-br from-base-100 to-base-300">
+      <div
+        className={`flex items-center justify-center h-screen ${
+          theme === "dark"
+            ? "bg-gradient-to-l from-[#7DC387] to-[#DBE9EA] text-gray-800"
+            : "bg-gradient-to-br from-base-100 to-base-300 text-white"
+        }`}
+      >
         <div className="bg-base-100 p-12 rounded-xl shadow-xl flex flex-col items-center">
           <svg
             className="w-20 h-20 text-blue-400 mb-6"
@@ -59,7 +67,12 @@ const Request = () => {
   
 
   return selector && (
-    <div className=" bg-base-100 flex flex-col items-center gap-5 my-5">
+    <div
+    className={`flex flex-col items-center gap-5 my-5 ${
+      theme === "dark"
+        ? "bg-gradient-to-l from-[#7DC387] to-[#DBE9EA] text-gray-800"
+        : "bg-gray-900 text-white"
+    }`}>
           {selector.map((user, index) => (
         <CardRequest key={index} user={user} />
       ))}

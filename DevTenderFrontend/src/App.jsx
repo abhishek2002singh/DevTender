@@ -16,6 +16,10 @@ import Skills from './component/Skills';
 import Jobs from './Jobs';
 import Contact from './component/Contact';
 import PreLoginHandle from './component/PreLoginHandle';
+import Notifications from './component/Notifications';
+import Message from './component/Message'
+
+
 
 function App() {
   return (
@@ -33,6 +37,8 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="EditProfile" element={<EditProfile />} />
             <Route path="connection" element={<Connection />} />
+            <Route path="notification" element={<Notifications/>} />
+            <Route path="message" element={<Message/>} />
             <Route path="request" element={<Request />} />
             <Route path="about" element={<About />} />
             <Route path="skills" element={<Skills />} />

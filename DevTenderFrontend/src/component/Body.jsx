@@ -6,13 +6,14 @@ import { useDispatch, useSelector } from "react-redux"
 import {addUser} from '../utils/userSlice'
 import { useEffect } from "react"
 import Footer from "./Footer"
+import Sidebar from "./Sidebar"
 
 
 const Body = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  const { theme } = useSelector((store) => store.theme);
   const selector = useSelector((store)=>store.user)
 
   const fetchUser = async()=>{
@@ -46,13 +47,28 @@ const Body = () => {
     //     <Outlet/>
         
     // </div>
+    <div
+    className={`font-sans h-screen flex flex-col ${
+      theme == "light"
+        ? "bg-gray-900 text-white"
+        : "bg-gradient-to-l to left from-[#7DC387] to-[#DBE9EA] text-gray-800"
+    }`}
+  >
 
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-full">
     <NavBar />
-    <div className="flex-grow">
-      <Outlet />
+    <div className="relative flex-grow   ">
+      <Sidebar />
+     
+         <Outlet />
+     
+      
+       
+      
+      
     </div>
-    <Footer /> {/* Add Footer here */}
+    <Footer /> 
+  </div>
   </div>
   )
 }

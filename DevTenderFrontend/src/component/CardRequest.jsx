@@ -1,10 +1,11 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/Constant";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeRequest } from "../utils/requstSlice";
 
 const CardRequest = ({ user }) => {
     const dispatch = useDispatch()
+    const { theme } = useSelector((store) => store.theme);
     const { firstName, lastName, age, gender, about, skills, photoUrl } = user.fromUserId;
 
     const reviewRequest = async(status ,_id) =>{
@@ -22,8 +23,13 @@ const CardRequest = ({ user }) => {
     }
   
     return (
-      <div className="carousel carousel-center rounded-box max-w-md space-x-4 p-4 bg-base-300 shadow-md">
-        <div className="carousel-item flex flex-col items-center">
+      <div
+      className={`carousel carousel-center h-screen w-96 rounded-box max-w-md space-x-4 shadow-md p-4 ${
+        theme === "dark"
+          ? "bg-gradient-to-l from-[#7DC387] to-[#DBE9EA] text-gray-800"
+          : "bg-gray-900 text-white"
+      }`}>
+        <div className="carousel-item flex flex-col items-center w-96 justify-center">
           <img src={photoUrl} alt={`${firstName} ${lastName}`} className="w-32 h-32 rounded-full object-cover mb-4" />
           
           <div className="text-center">

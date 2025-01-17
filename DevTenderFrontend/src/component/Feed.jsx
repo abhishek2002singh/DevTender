@@ -9,6 +9,7 @@ import UserCard from "./UserCard"
 const Feed = () => {
   const dispatch = useDispatch()
   const feed = useSelector((store)=>store.feed)
+  const { theme } = useSelector((store) => store.theme);
   console.log(feed)
 
   const getfeed = async()=>{
@@ -31,7 +32,11 @@ const Feed = () => {
 
   if (feed.length <= 0) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-base-100 to-base-300">
+      <div className={`flex items-center justify-center h-screen ${
+        theme === 'dark'
+          ? "bg-gradient-to-l to left from-[#7DC387] to-[#DBE9EA] text-gray-800"
+          : "bg-gray-900 text-white"
+      }`}>
         <div className="bg-base-100 p-12 rounded-xl shadow-xl flex flex-col items-center">
           <svg
             className="w-20 h-20 text-blue-400 mb-6"
@@ -68,7 +73,7 @@ const Feed = () => {
   
 
   return feed && (
-    <div>
+    <div >
       <UserCard user={feed[0]}/>
     </div>
   )

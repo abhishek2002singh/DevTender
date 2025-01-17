@@ -1,10 +1,20 @@
+import { useSelector } from "react-redux";
+
 
 
 const CardConnection = ({ user }) => {
+  const { theme } = useSelector((store) => store.theme);
+  
   if (!user) return null;
 
   return (
-    <div className="w-96 rounded-[10px] overflow-hidden shadow-lg bg-base-300 p-6">
+  
+  
+    <div className={`w-96 rounded-[10px] m-auto overflow-hidden shadow-lg  p-6 ${
+        theme === 'dark'
+          ? "bg-gradient-to-l to left from-[#7DC387] to-[#DBE9EA] text-gray-800"
+          : "bg-base-100 text-white"
+      }`}>
       <img
         src={user.photoUrl}
         alt={`${user.firstName} ${user.lastName}`}
@@ -16,6 +26,7 @@ const CardConnection = ({ user }) => {
         </h2>
         <p className="text-gray-400">Age: {user.age}</p>
         <p className="text-gray-400">Gender: {user.gender}</p>
+       
       </div>
       <div className="mt-4">
         <h3 className="text-lg font-medium text-gray-400">Skills:</h3>
@@ -31,6 +42,8 @@ const CardConnection = ({ user }) => {
         </ul>
       </div>
     </div>
+    
+    
   );
 };
 

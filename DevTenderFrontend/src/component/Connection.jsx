@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addConnections } from '../utils/connectionSlice';
 import CardConnection from "./CardConnection";
+import Sidebar from "./Sidebar";
 
 const Connection = () => {
   const dispatch = useDispatch();
+   const { theme } = useSelector((store) => store.theme);
   const userSelector = useSelector((store) => store.connections);
+  
 
   const showConnection = async () => {
     try {
@@ -19,16 +22,29 @@ const Connection = () => {
       console.error(err);
     }
   };
+  
 
   useEffect(() => {
     showConnection();
   }, []);
 
+  const totalConnections = userSelector ? userSelector.length : 0;
+
   if (!userSelector || userSelector.length === 0) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-base-100 p-4">
-        <div className="bg-base-300  rounded-lg shadow-lg p-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+      
+      
+      <div className={`flex items-center m-auto justify-center min-h-screen bg-base-100 p-4 ${
+        theme === 'dark'
+          ? "bg-gradient-to-l to left from-[#7DC387] to-[#DBE9EA] text-gray-800"
+          : "bg-base-100 text-white"
+      }`}>
+        <div className={` rounded-lg shadow-lg p-8 text-center${
+        theme === 'dark'
+          ? "bg-gradient-to-l to left from-[#7DC387] to-[#DBE9EA] text-gray-800"
+          : "bg-base-300 text-white"
+      }`}>
+          <h2 className="text-3xl font-bold text-gray-600 mb-4">
             No Connections Available
           </h2>
           <p className="text-lg text-gray-600 mb-4">
@@ -50,13 +66,26 @@ const Connection = () => {
           </div>
         </div>
       </div>
+     
     );
   }
   
   
 
   return (
-    <div className=" bg-base-100 flex flex-col items-center gap-6 my-5">
+    
+    <div className={`bg-base-100 flex flex-col items-center gap-6  ${
+    theme === "dark"
+        ? "bg-gradient-to-l from-[#7DC387] to-[#DBE9EA] text-gray-800"
+        : "bg-gray-900 text-white"
+    }`}>
+
+      <div className="text-center my-4">
+        <h2 className="text-2xl font-bold text-gray-400">
+          Total Connections: {totalConnections}
+        </h2>
+      </div>
+      
       {userSelector.map((user, index) => (
         <CardConnection key={index} user={user} />
       ))}

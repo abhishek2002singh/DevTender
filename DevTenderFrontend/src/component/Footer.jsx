@@ -1,8 +1,18 @@
 import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
+
+  const { theme } = useSelector((store) => store.theme);
+
   return (
-    <footer className="bg-base-300 text-base-content p-10 w-full">
+    <footer
+    className={`p-10 w-full ${
+      theme === 'light'
+        ? "bg-gray-900 text-white"
+        : "bg-gradient-to-l from-[#7DC387] to-[#DBE9EA] text-gray-800"
+    }`}
+    >
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center">
         <nav className="mb-6 md:mb-0">
           <h6 className="text-lg font-semibold mb-4">Developer Information</h6>
