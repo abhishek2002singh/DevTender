@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 
 const Prelogin = () => {
   return (
@@ -18,14 +19,18 @@ const Prelogin = () => {
             Swipe into the world of developers.
           </p>
           <div>
+            <Link to="/login">
             <button className="bg-yellow-400 text-black font-bold px-6 py-3 rounded-md text-lg shadow-lg hover:bg-yellow-500 transition duration-300">
               Join for free
             </button>
+            </Link>
             <p className="mt-4">
               Already joined us?{" "}
+              <Link to="/login">
               <a href="#login" className="text-blue-500 hover:underline">
                 Log in
               </a>
+              </Link>
             </p>
           </div>
         </div>

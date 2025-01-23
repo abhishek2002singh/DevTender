@@ -24,7 +24,7 @@ const CardRequest = ({ user }) => {
   
     return (
       <div
-      className={`carousel carousel-center h-screen w-96 rounded-box max-w-md space-x-4 shadow-md p-4 ${
+      className={`carousel carousel-center h-auto w-96 rounded-box max-w-md space-x-4 shadow-md p-4 ${
         theme === "dark"
           ? "bg-gradient-to-l from-[#7DC387] to-[#DBE9EA] text-gray-800"
           : "bg-gray-900 text-white"

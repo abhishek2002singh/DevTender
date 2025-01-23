@@ -11,7 +11,7 @@ const PreloginNav = () => {
             alt="DevTender Logo"
             className="h-10 w-10 rounded-full"
           />
-          <span className="text-2xl font-bold hover:text-gray-300">DevTender</span>
+          <span className="text-2xl font-bold hover:text-gray-300">DevTinder</span>
         </Link>
         
         {/* Navigation Links */}

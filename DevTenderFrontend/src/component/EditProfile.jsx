@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { BASE_URL } from "../utils/Constant";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from '../utils/userSlice';
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 
@@ -15,6 +15,7 @@ const EditProfile = () => {
   const [gender, setGender] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Initialize navigate
+  const { theme } = useSelector((store) => store.theme);
 
   const handleEditProfile = async (e) => {
     e.preventDefault(); // Prevents the form from submitting and page refreshing
@@ -46,8 +47,17 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-base-100 my-5">
-      <div className="w-full max-w-lg bg-base-300 rounded-lg shadow-md p-6">
+    <div className={`flex items-center justify-center min-h-screen bg-base-100 my-5 ${
+        theme === 'dark'
+          ? "bg-gradient-to-l to left from-[#7DC387] to-[#DBE9EA] text-gray-800"
+          : "bg-gray-900 text-white"
+      }`}>
+      <div className={`w-full max-w-lg bg-base-300 rounded-lg shadow-md p-6
+      ${
+        theme === 'dark'
+          ? "bg-gradient-to-l to left from-[#7DC387] to-[#DBE9EA] text-gray-800"
+          : "bg-gray-900 text-white"
+      }`}>
         <h2 className="text-2xl font-bold mb-6 text-center">Edit Profile</h2>
         <h2 className="block text-sm font-medium text-red-400 text-center">all boxes mandatory to fill</h2>
         <form className="space-y-4" onSubmit={handleEditProfile}>
