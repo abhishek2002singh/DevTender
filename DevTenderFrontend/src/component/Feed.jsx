@@ -1,42 +1,49 @@
-import axios from "axios"
-import { BASE_URL } from '../utils/Constant'
-import { useDispatch, useSelector } from "react-redux"
-import{addFeed} from '../utils/feedSlice'
-import { useEffect } from "react"
-import UserCard from "./UserCard"
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { BASE_URL } from "../utils/Constant";
+import { useDispatch, useSelector } from "react-redux";
+import { addFeed } from "../utils/feedSlice";
+import UserCard from "./UserCard";
+import GetPost from "./GetPost";
+import HelpCenter from "../help/HelpCenter"; // Import HelpCenter
+import { Link } from "react-router-dom";
 
 const Feed = () => {
-  const dispatch = useDispatch()
-  const feed = useSelector((store)=>store.feed)
+  const dispatch = useDispatch();
+  const feed = useSelector((store) => store.feed);
   const { theme } = useSelector((store) => store.theme);
-  console.log(feed)
+  const [userId, setUserId] = useState("");
+ 
 
-  const getfeed = async()=>{
-    if(feed)return
-    try{
+  const getFeed = async () => {
+    if (feed) return;
+    try {
+      const res = await axios.get(`${BASE_URL}/feed`, { withCredentials: true });
+      dispatch(addFeed(res.data));
       
-         const res = await axios.get(BASE_URL+"/feed",{withCredentials:true});
-         dispatch(addFeed(res.data))
-    }catch(err){
-      console.error(err)
+    } catch (err) {
+      console.error(err);
+      alert("Failed to fetch feed. Please try again.");
     }
+  };
+
+  useEffect(() => {
+    getFeed();
+  }, []);
+
   
-  }
 
-  useEffect(()=>{
-        getfeed()
-  } ,[])
-
-  if(!feed) return
+  if (!feed) return null;
 
   if (feed.length <= 0) {
     return (
-      <div className={`flex items-center justify-center h-screen ${
-        theme === 'dark'
-          ? "bg-gradient-to-l to left from-[#7DC387] to-[#DBE9EA] text-gray-800"
-          : "bg-gray-900 text-white"
-      }`}>
+      <div
+        className={`flex items-center justify-center h-screen ${
+          theme === "dark"
+            ? "bg-gradient-to-l from-[#7DC387] to-[#DBE9EA] text-gray-800"
+            : "bg-gray-900 text-white"
+        }`}
+      >
         <div className="bg-base-100 p-12 rounded-xl shadow-xl flex flex-col items-center">
           <svg
             className="w-20 h-20 text-blue-400 mb-6"
@@ -53,30 +60,32 @@ const Feed = () => {
             />
           </svg>
           <h1 className="text-3xl font-bold text-gray-400 mb-4">No New Users Found</h1>
-        <p className="text-gray-400 mb-6">
-          It looks like there are currently no new users in your feed.
-        </p>
-        <p className="text-gray-400 mb-6">
-          Refresh the page or check back later to see updates!
-        </p>
-        <button
-          className="mt-4 bg-purple-500 text-white px-6 py-2 rounded-lg shadow hover:bg-purple-600 transition duration-300 ease-in-out"
-          onClick={() => window.location.reload()} // Reloads the page
-        >
-          Refresh
-        </button>
+          <p className="text-gray-400 mb-6">It looks like there are currently no new users in your feed.</p>
+          <p className="text-gray-400 mb-6">Check back later to see updates!!</p>
+          <p className="text-gray-400 flex items-center mb-6">
+            Users can also explore this website and create an account here!
+            <img
+              src="https://em-content.zobj.net/source/noto-emoji-animations/344/smiling-face-with-smiling-eyes_1f60a.gif"
+              alt="Smiley Face"
+              className="w-6 h-6 ml-2"
+            />
+          </p>
         </div>
       </div>
     );
   }
 
-  
-
-  return feed && (
-    <div >
-      <UserCard user={feed[0]}/>
+  return (
+    
+    <div className="relative z-0">
+     console.log(key)
+     
+      <UserCard user={feed[0]} />
+      
+      <GetPost />
+      <HelpCenter /> 
     </div>
-  )
-}
+  );
+};
 
-export default Feed
+export default Feed;

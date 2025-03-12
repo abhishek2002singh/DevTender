@@ -7,6 +7,9 @@ import {addUser} from '../utils/userSlice'
 import { useEffect } from "react"
 import Footer from "./Footer"
 import Sidebar from "./Sidebar"
+import AddPostFeature from "./AddPostFeature"
+import HelpCenter from "../help/HelpCenter"
+
 
 
 const Body = () => {
@@ -48,20 +51,22 @@ const Body = () => {
         
     // </div>
     <div
-    className={`font-sans h-screen flex flex-col ${
+    className={`font-sans  flex flex-col ${
       theme == "light"
         ? "bg-gray-900 text-white"
         : "bg-gradient-to-l to left from-[#7DC387] to-[#DBE9EA] text-gray-800"
     }`}
   >
 
-    <div className="flex flex-col min-h-full">
+    <div className="flex flex-col h-full">
     <NavBar />
-    <div className="relative flex-grow   ">
+    <div className="relative flex-grow  ">
       <Sidebar />
-     
+         
+       <HelpCenter /> {/* Add HelpCenter component */}
          <Outlet />
-     
+         
+       
       
        
       
