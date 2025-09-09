@@ -76,7 +76,7 @@ const OtpLogin = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
       <ToastContainer position="top-right" autoClose={3000} />
       <div className="bg-gray-800 text-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-4">OTP Login</h2>
+        <h2 className="text-2xl font-bold text-center mb-4">OTP for forget password and update password</h2>
 
         {/* Email Input */}
         <input

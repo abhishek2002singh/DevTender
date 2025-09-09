@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { setPaymentStatus } from "../utils/paymentSlice"; // Import the payment slice action
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const GetReel = () => {
   const [reels, setReels] = useState([]);
@@ -135,6 +135,7 @@ const GetReel = () => {
           <p className="text-xl mb-4">
             Please subscribe or pay to view and interact with reels.
           </p>
+          <Link to='/app/payment'>
           <button
             className="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-lg font-semibold shadow-lg"
             onClick={() => {
@@ -146,11 +147,12 @@ const GetReel = () => {
                 pauseOnHover: true,
                 draggable: true,
               });
-              setTimeout(() => navigate("/app/payment"), 2000);
+              
             }}
           >
             Subscribe Now
           </button>
+          </Link>
         </div>
       )}
 
